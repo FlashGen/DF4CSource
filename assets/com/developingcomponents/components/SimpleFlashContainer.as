@@ -1,0 +1,1 @@
+﻿package com.developingcomponents.components {		import mx.flash.ContainerMovieClip;		public class SimpleFlashContainer extends ContainerMovieClip 	{		public function SimpleFlashContainer() 		{			// constructor code		}	}}

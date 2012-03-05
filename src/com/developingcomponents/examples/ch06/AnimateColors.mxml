@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="330" height="330">
+
+	<fx:Declarations>
+		<s:AnimateColor id="aniCol" 
+						colorFrom="{fromCol.selectedColor}" 
+						colorTo="{toCol.selectedColor}" 
+						duration="5000" 
+						target="{col}" />
+	</fx:Declarations>  
+	
+	<s:VGroup width="100%" height="100%">
+		<s:HGroup width="100%" height="40" 
+				  verticalAlign="middle">
+			
+			<s:Label text="From Color:"/>
+			<mx:ColorPicker id="fromCol" 
+							selectedColor="0xffcc00" />
+			<s:Label text="To Color:"/>
+			<mx:ColorPicker id="toCol" 
+							selectedColor="0x00fcfc"/>
+			<s:Button id="playBtn" label="Play Color Transition"  
+					  click="aniCol.play()" />
+		</s:HGroup>
+		
+		<s:Rect width="100%" height="100%">
+			<s:fill>
+				<s:SolidColor id="col" color="{fromCol.selectedColor}" />
+			</s:fill>
+		</s:Rect>
+	</s:VGroup>
+	
+</s:Group>

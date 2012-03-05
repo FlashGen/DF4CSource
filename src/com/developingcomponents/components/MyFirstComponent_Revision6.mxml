@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Container xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			  xmlns:s="library://ns.adobe.com/flex/spark" 
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  width="200" height="200"
+			  backgroundColor="0xff0000" creationComplete="createCircle()">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.UIComponent;
+			
+			private var _ellipse    :UIComponent = new UIComponent();
+			
+			protected function createCircle():void
+			{
+				var eg  :Graphics = _ellipse.graphics;
+				eg.clear();
+				eg.beginFill(0x0000ff, 1);
+				eg.drawEllipse(0, 0, width, height);
+				eg.endFill();
+				
+				addChild(_ellipse);
+			}
+		]]>
+	</fx:Script>
+
+</mx:Container> 

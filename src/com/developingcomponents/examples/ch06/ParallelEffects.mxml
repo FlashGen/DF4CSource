@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 creationComplete="creationCompleteHandler(event)">
+	
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" verticalAlign="middle" />
+	</s:layout>
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.effects.Glow;
+			import mx.effects.Parallel;
+			
+			import spark.components.BorderContainer;
+			import spark.components.Button;
+			import spark.effects.Fade;
+			
+			private var _demoContainer :BorderContainer = new BorderContainer();
+			private var _showBtn  :Button = new Button();
+			private var _parallel :Parallel = new Parallel(_demoContainer);
+			private var _visible  :Boolean = true;
+			
+			private function creationCompleteHandler(e:Event):void 
+			{
+				// Define our container
+				_demoContainer.setStyle("backgroundColor", 0x000000);
+				_demoContainer.width = 250;
+				_demoContainer.height = 250;
+				
+				// Set up the button values and the handler
+				_showBtn.label = "Hide";
+				_showBtn.addEventListener(MouseEvent.CLICK, updateDisplay);
+				
+				// Define our Fade effect here
+				var _fade    :Fade = new Fade();
+				_fade.alphaFrom = 0;
+				_fade.alphaTo = 1;
+				_fade.duration = 1000;
+				
+				// Define our Glow effect here
+				var _glow    :Glow = new Glow();
+				_glow.alphaFrom = 1;
+				_glow.alphaTo = 0;
+				_glow.blurXFrom = 0;
+				_glow.blurXTo = 30;
+				_glow.blurYFrom = 0;
+				_glow.blurYTo = 30;
+				_glow.color = 0xff0000;
+				
+				// OK here we add our fade and glow to the Parallel object
+				_parallel.addChild(_fade);
+				_parallel.addChild(_glow);
+				// Finally add it all to the display list.
+				addElement(_demoContainer);
+				addElement(_showBtn);
+			}
+			
+			private function updateDisplay(e:MouseEvent):void 
+			{
+				if (_visible) 
+				{
+					_parallel.play(null, true);
+					_visible = false;
+					_showBtn.label = "Show";
+				} 
+				else 
+				{
+					_parallel.play();
+					_visible = true;
+					_showBtn.label = "Hide";
+				}
+			}
+		]]>
+	</fx:Script>
+</s:Group>

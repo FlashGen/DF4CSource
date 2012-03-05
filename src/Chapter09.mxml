@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   xmlns:examples="com.developingcomponents.examples.ch09.*"
+			   minWidth="800" minHeight="600" xmlns:components="com.developingcomponents.components.*"  
+			   >
+	
+	<fx:Style source="assets/css/globalCSS.css"/>
+	<fx:Script>
+		<![CDATA[
+			import com.developingcomponents.renderers.EnhancedImageRenderer;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		
+		<!-- Source Array for the Sorting & Filtereing Examples -->
+		<fx:Array id="productArr">				
+			<fx:Object name="Flash Player" bu="Platform" icon="@Embed(source='assets/icons/flashplayer.png')" />
+			<fx:Object name="Fireworks" bu="Creative Suite" icon="@Embed(source='assets/icons/fireworks.png')" />
+			<fx:Object name="Photoshop" bu="Creative Suite" icon="@Embed(source='assets/icons/photoshop.png')" />
+			<fx:Object name="AIR" bu="Platform" icon="@Embed(source='assets/icons/air.png')" />
+			<fx:Object name="Flash Professional" bu="Creative Suite" icon="@Embed(source='assets/icons/flash.png')" />
+			<fx:Object name="Flash Builder" bu="Platform" icon="@Embed(source='assets/icons/flex.png')" />
+			<fx:Object name="Dreamweaver" bu="Creative Suite" icon="@Embed(source='assets/icons/dreamweaver.png')" />
+			<fx:Object name="Illustrator" bu="Creative Suite" icon="@Embed(source='assets/icons/illustrator.png')" />
+		</fx:Array>
+		
+		<!-- ArrayCollections used by the Sorting & Filtering Examples -->
+		<s:ArrayCollection id="filterColl" source="{productArr}" />
+		<s:ArrayCollection id="sortColl" source="{productArr}" />
+		<s:ArrayCollection id="sortFilterColl" source="{productArr}" />
+		
+		<s:ArrayCollection id="slideShowData">
+			<fx:Array>
+				<fx:Object label="A colored slide" image="assets/images/image1.png" />
+				<fx:Object label="Another slide" image="assets/images/image2.png" />
+				<fx:Object label="And another" image="assets/images/image3.png" />
+				<fx:Object label="Imaginitive eh?" image="assets/images/image4.png" />
+				<fx:Object label="Last one..." image="assets/images/image5.png" />
+			</fx:Array>
+		</s:ArrayCollection>
+	</fx:Declarations>
+	
+	<s:layout>
+		<s:HorizontalLayout paddingBottom="20" paddingLeft="20" 
+							paddingRight="20" paddingTop="20" />
+	</s:layout>
+	
+	<s:controlBarContent>
+		<s:Label id="title" text="Chapter 09 - Managing Data" styleName="pageHeader"/>	
+	</s:controlBarContent>
+	
+	<mx:TabNavigator backgroundColor="#999999" borderVisible="false">
+		
+		<!-- Sorting & Filtering Collections -->
+		<s:NavigatorContent label="Filtering &amp; sorting Collections" 
+						backgroundColor="#999999" contentBackgroundColor="#FFFFFF">	
+			<s:VGroup width="100%" height="100%"
+					  paddingBottom="20" paddingLeft="20"
+					  paddingRight="20" paddingTop="20" gap="10">
+				
+				<s:Label text="Filtering and sorting data in a non destructive manner"  fontWeight="bold" fontSize="16" color="#FFFFFF" styleName="infoText"/>
+				<s:HGroup width="100%" height="100%">
+					
+					<s:Panel title="Control" width="300" height="280">
+						<mx:DataGrid id="control"
+									 dataProvider="{productArr}"
+									 verticalScrollPolicy="on" 
+									 width="100%" height="100%" 
+									 showHeaders="false">
+							<mx:columns>
+								<mx:DataGridColumn headerText="Product" dataField="name"/>
+								<mx:DataGridColumn headerText="Business Unit" dataField="bu"/>
+								<mx:DataGridColumn headerText="Business Unit" dataField="icon" itemRenderer="com.developingcomponents.renderers.CenteredImage"/>
+							</mx:columns>
+						</mx:DataGrid>
+					</s:Panel>
+					
+					<!-- Sorting / Filtering components -->
+					<examples:SortingCollections dataProvider="{sortColl}" />
+					<examples:FilteringCollections dataProvider="{filterColl}" />
+					<examples:SortAndFilterCollections dataProvider="{sortFilterColl}" />
+					
+				</s:HGroup>
+				<s:TextArea text="The Control panel is linked directly to the source Array. Each of the subsequent panels uses separate ArrayCollections that use the same Array as the Control panel as their data source." width="80%"/>
+			</s:VGroup>
+		</s:NavigatorContent>	
+		
+		<!-- Cursors & Collections-->
+		<s:NavigatorContent label="Working with Cursors" 
+							backgroundColor="#999999" contentBackgroundColor="#FFFFFF">
+			<s:VGroup width="100%" height="100%"
+					  paddingBottom="20" paddingLeft="20"
+					  paddingRight="20" paddingTop="20" gap="10">
+				<s:Label text="Accessing a collections data using cursors"  styleName="infoText"/>
+				<s:HGroup width="100%" height="100%">
+					
+					<!-- Collection Cursor example -->
+					<examples:Cursors />		
+				</s:HGroup>
+			</s:VGroup>
+		</s:NavigatorContent>
+		
+		<!-- Item Renderers -->
+		<s:NavigatorContent label="Working with Item Renderers">
+			<s:layout>
+				<s:VerticalLayout />
+			</s:layout>
+			<s:HGroup width="100%" height="100%">
+				<components:ImageSlideShow width="320" dataProvider="{slideShowData}"/>
+				<components:ImageSlideShow width="320" dataProvider="{slideShowData}"
+										   itemRenderer="com.developingcomponents.renderers.EnhancedImageRenderer"/>
+			</s:HGroup>
+			<s:TextArea width="100%" text="The first slide show component uses the default (built-in item renderer). 
+											The second version has an external item renderer that allows access to the 
+											additional data passed (roll over the image and it will drop down from the top)" />
+		</s:NavigatorContent>
+		
+	</mx:TabNavigator>
+	
+	
+</s:Application>

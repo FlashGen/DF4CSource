@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   xmlns:components="com.developingcomponents.components.*"
+			   minWidth="955" minHeight="600" 
+			   >
+
+	<fx:Style source="assets/css/globalCSS.css"/>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:controlBarContent>
+		<s:Label id="title" text="Chapter 07 - Working With MetaData" styleName="pageHeader"/>	
+	</s:controlBarContent>
+	
+	<s:layout>
+		<s:HorizontalLayout paddingBottom="20" paddingLeft="20" 
+							paddingRight="20" paddingTop="20" />
+	</s:layout>
+	
+	<!-- Default Property Example -->
+	<components:DefaultPropertyComponent>
+		Hello
+	</components:DefaultPropertyComponent>
+</s:Application>

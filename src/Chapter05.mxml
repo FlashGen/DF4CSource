@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   xmlns:examples="com.developingcomponents.examples.ch05.*" 
+			   minWidth="800" minHeight="600" xmlns:components="com.developingcomponents.components.*" 
+			   >
+	
+	<fx:Style source="assets/css/globalCSS.css"/>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+
+	<s:controlBarContent>
+		<s:Label id="title" text="Chapter 05 - Managing States" styleName="pageHeader"/>	
+	</s:controlBarContent>
+	
+	<s:layout>
+		<s:HorizontalLayout paddingBottom="20" paddingLeft="20" 
+							paddingRight="20" paddingTop="20" />
+	</s:layout>
+	
+	<mx:TabNavigator backgroundColor="#999999" borderVisible="false" tabWidth="200">
+		
+		<!-- Simple State Example -->
+		<s:NavigatorContent label="Simple State Example" 
+							backgroundColor="#999999">	
+			<examples:SimpleStateExample width="100%" height="100%" />
+		</s:NavigatorContent>
+		
+		<s:NavigatorContent label="Include and Exclude">
+			<examples:IncludeExcludeStates  width="100%" height="100%"/>
+		</s:NavigatorContent>
+
+		<s:NavigatorContent label="State Groups">
+			<examples:StateGroups  width="100%" height="100%"/>
+		</s:NavigatorContent>
+
+		<s:NavigatorContent label="Working With Overrides">
+			<examples:WorkingWithOverrides  width="100%" height="100%"/>
+		</s:NavigatorContent>
+
+		<s:NavigatorContent label="Basic State Component">
+			<components:BasicStateComponent currentState="mySecondState"/>
+		</s:NavigatorContent>
+		
+		
+		
+	</mx:TabNavigator>
+	
+	
+
+</s:Application>

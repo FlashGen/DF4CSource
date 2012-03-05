@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 creationComplete="creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			
+			import mx.events.FlexEvent;
+			import mx.states.AddItems;
+			import mx.states.SetProperty;
+			import mx.states.State;
+			
+			import spark.components.HGroup;
+			import spark.layouts.VerticalAlign;
+			
+			protected function creationCompleteHandler(event:FlexEvent):void
+			{
+				var _state1 :State = new State();
+				_state1.name = "myFirstState";
+				var _item       :AddItems = new AddItems();
+				_item.itemsFactory = new DeferredInstanceFromFunction(createButtonGroup);
+				_state1.overrides.push(_item);
+				
+				var _state2      :State = new State();
+				_state2.name = "mySecondState";
+				_state2.basedOn = "myFirstState";
+				states.push(_state1, _state2);
+			}
+			
+			protected function createButtonGroup():HGroup
+			{
+				var _group       :HGroup = new HGroup();
+				_group.percentWidth = 100;
+				_group.height = 50;
+				_group.verticalAlign = VerticalAlign.MIDDLE;
+				
+				var _array       :Array = ["Button A", "Button B"];
+				
+				for(var i:int = 0; i < _array.length; ++i)
+				{
+					var _btn         :Button = new Button();
+					_btn.name = "btn" + String(_array[i]);
+					_btn.label = _array[i];
+					_group.addElement(_btn);
+				}
+				
+				return _group;                     
+			}
+			
+			protected function btn0_clickHandler(event:MouseEvent):void
+			{
+				currentState = "normal";
+			}
+			
+			protected function btn1_clickHandler(event:MouseEvent):void
+			{
+				currentState = "myFirstState";
+			}
+			
+			protected function btn2_clickHandler(event:MouseEvent):void
+			{
+				currentState = "mySecondState";
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:layout>
+		<s:VerticalLayout />
+	</s:layout>
+	
+	<s:states>
+		<s:State name="normal"/>
+	</s:states>
+	
+	<!--   
+	<s:Button id="btn0" label="Show Normal State"
+	click="btn0_clickHandler(event)" />
+	-->
+	<s:Button id="btn1" label="Show myState"
+			  click="btn1_clickHandler(event)" />
+	<s:Button id="btn2" label="Show mySecondState"
+			  click="btn2_clickHandler(event)" /> 
+</s:Group>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   xmlns:examples="com.developingcomponents.examples.ch08.*"
+			   xmlns:components="com.developingcomponents.components.*" 
+			   minWidth="955" minHeight="600" 
+			   >
+	
+	<fx:Style source="assets/css/globalCSS.css"/>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.developingcomponents.events.ExampleEvent;
+
+			protected function eventExampleEventHandler(event:ExampleEvent):void
+			{
+				output.text = event.data.name;
+			}
+
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:controlBarContent>
+		<s:Label id="title" text="Chapter 08 - Events And EventHandling" styleName="pageHeader"/>	
+	</s:controlBarContent>
+	
+	<s:layout>
+		<s:HorizontalLayout paddingBottom="20" paddingLeft="20" 
+							paddingRight="20" paddingTop="20" />
+	</s:layout>
+	
+	<mx:TabNavigator backgroundColor="#999999" borderVisible="false" tabWidth="200">
+
+		<s:NavigatorContent label="Event Targets" 
+							backgroundColor="#999999">
+			<s:VGroup width="100%" height="100%">
+				<examples:SimpleEventExample />
+				<s:Label text="Click the panel.." styleName="infoText" />
+			</s:VGroup>
+		</s:NavigatorContent>
+
+		<s:NavigatorContent label="Dispatching Events" 
+							backgroundColor="#999999">
+			<s:VGroup width="100%" height="100%">
+				<s:Label id="output" styleName="infoText" />
+				<components:EventDispatchingComponent id="eventExample" 
+													  defaultEvent="eventExampleEventHandler(event)" />
+			</s:VGroup>
+		</s:NavigatorContent>
+
+		<s:NavigatorContent label="Stopping Propagation" 
+							backgroundColor="#999999">
+			<s:VGroup width="100%" height="100%">
+				<examples:PropogationExample id="propExample" />
+				<s:Button label="Toggle Propagation" click="{propExample.stopPropagation = !propExample.stopPropagation}"/>
+			</s:VGroup>
+		</s:NavigatorContent>
+		
+	</mx:TabNavigator>
+</s:Application>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   xmlns:examples="com.developingcomponents.examples.ch06.*"
+			   minWidth="955" minHeight="600" xmlns:components="com.developingcomponents.components.*" 
+			   >
+	
+	<fx:Style source="assets/css/globalCSS.css"/>
+
+	<fx:Script>
+		<![CDATA[
+			protected function transitionBtn_clickHandler(event:MouseEvent):void
+			{
+				tranComp1.currentState = tranComp2.currentState = (tranComp1.currentState != "panelView") ? "panelView" : "normal";
+			}
+		]]>
+	</fx:Script>
+
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:controlBarContent>
+		<s:Label id="title" text="Chapter 06 - Effects &amp; Transitions" styleName="pageHeader"/>	
+	</s:controlBarContent>
+	
+	<s:layout>
+		<s:HorizontalLayout paddingBottom="20" paddingLeft="20" 
+							paddingRight="20" paddingTop="20" />
+	</s:layout>
+	
+	<mx:TabNavigator backgroundColor="#999999" borderVisible="false" tabWidth="150">
+		
+		<!-- Simple State Example -->
+		<s:NavigatorContent label="Animate Colors" 
+							backgroundColor="#999999">	
+			<examples:AnimateColors />
+		</s:NavigatorContent>
+
+		<s:NavigatorContent label="Animate Objects" 
+							backgroundColor="#999999">	
+			<examples:AnimateSquare />
+		</s:NavigatorContent>
+
+		<s:NavigatorContent label="Overring Effect Layout" 
+							backgroundColor="#999999">	
+			<examples:OverridingEffectLayout />
+		</s:NavigatorContent>
+
+		<s:NavigatorContent label="Filter Effects" 
+							backgroundColor="#999999">	
+			<examples:FilterEffects />
+		</s:NavigatorContent>
+		
+		<s:NavigatorContent label="Transition Effects" 
+							backgroundColor="#999999">
+			<examples:TriggeringEffects />
+		</s:NavigatorContent>
+		
+		<s:NavigatorContent label="Orchestrating Effects"
+							backgroundColor="#999999">
+			<examples:ParallelEffects />
+		</s:NavigatorContent>
+
+		<s:NavigatorContent label="MotionPath Effects"
+							backgroundColor="#999999">
+			<examples:MotionPathEffects />
+		</s:NavigatorContent>
+
+		<s:NavigatorContent label="Transitions"
+							backgroundColor="#999999">
+			<s:VGroup width="100%" height="100%">	
+				<s:HGroup width="100%" height="100%">
+					<components:MXMLTransitionComponent id="tranComp1" />	
+					<components:ActionScriptTransitionComponent id="tranComp2" />
+				</s:HGroup>
+				<s:Button id="transitionBtn" label="Switch States"
+						  click="transitionBtn_clickHandler(event)"/>
+			</s:VGroup>
+		</s:NavigatorContent>
+		
+		
+	</mx:TabNavigator>
+	
+</s:Application>

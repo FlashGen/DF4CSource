@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:layout>
+		<s:VerticalLayout paddingTop="20" paddingBottom="20" 
+						  paddingLeft="20" paddingRight="20"/>
+	</s:layout>
+	
+	<s:states>
+		<s:State name="normal" />
+		<s:State name="author" />
+	</s:states>
+	
+	<mx:Image id="imageHolder" width="140" height="140" 
+			  horizontalAlign="center" verticalAlign="middle" 
+			  source="@Embed(source='assets/images/flashgen_com.png')"
+			  source.author="@Embed(source='assets/images/mikejones.jpg')"/>
+	
+	<s:Button id="selectorBtn" width="140" 
+			  label="Show Mike" 
+			  label.author="Show FlashGen" 
+			  click="currentState='author'"
+			  click.author="currentState=''"/>
+</s:Group>

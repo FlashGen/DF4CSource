@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:components="com.developingcomponents.components.*"
+			   xmlns:examples="com.developingcomponents.examples.ch10.*" 
+			   minWidth="955" minHeight="600" 
+			   >
+	
+	<fx:Style source="assets/css/globalCSS.css"/>
+	<fx:Script>
+		<![CDATA[
+			import com.developingcomponents.skins.HaloSparkSkin;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:controlBarContent>
+		<s:Label id="title" text="Chapter 10 - Anatomy Of A Component" styleName="pageHeader"/>	
+	</s:controlBarContent>
+	
+	<s:layout>
+		<s:HorizontalLayout paddingBottom="20" paddingLeft="20" 
+							paddingRight="20" paddingTop="20" />
+	</s:layout>
+	
+	<mx:TabNavigator backgroundColor="#999999" borderVisible="false" tabWidth="150">
+		<s:NavigatorContent label="Simple Skinned Component" 
+							backgroundColor="#999999">
+			<components:ExampleSkinnedComponent width="200" height="200" />
+		</s:NavigatorContent>
+
+		<s:NavigatorContent label="Smile" 
+							backgroundColor="#999999">
+			<examples:SmileyFaceMXMLG />
+		</s:NavigatorContent>
+
+		<s:NavigatorContent label="Spark skins for Halo" 
+							backgroundColor="#999999">
+			<mx:Button label="This is a Halo Button" skin="com.developingcomponents.skins.HaloSparkSkin" />
+		</s:NavigatorContent>
+	</mx:TabNavigator>
+</s:Application>

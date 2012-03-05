@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<fx:Script>
+		<![CDATA[       
+			import spark.filters.DropShadowFilter;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:AnimateFilter id="dropShadowFilterEffect"
+						 target="{square}"
+						 repeatCount="0"
+						 repeatBehavior="reverse"
+						 bitmapFilter="{new spark.filters.DropShadowFilter()}"
+						 >
+			<s:SimpleMotionPath property="color" 
+								valueFrom="0xff0000" valueTo="0xff0000"/>
+			<s:SimpleMotionPath property="distance" 
+								valueFrom="0" valueTo="10"/>
+			<s:SimpleMotionPath property="angle" 
+								valueFrom="0" valueTo="360"/>
+		</s:AnimateFilter>
+	</fx:Declarations>
+	
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+	</s:layout>
+	
+	<s:BorderContainer id="square" 
+					   width="200" height="200" 
+					   backgroundColor="0xffffff" 
+					   borderColor="0x000000"/>
+	<s:Button label="Run Filter" click="dropShadowFilterEffect.play()" />
+</s:Group>

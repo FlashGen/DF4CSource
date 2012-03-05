@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.ListEvent;
+			import mx.events.FlexEvent;
+			
+			protected function cBox_changeHandler(event:ListEvent):void
+			{
+				currentState = cBox.selectedLabel;
+			}                     
+		]]>
+	</fx:Script>
+	
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" paddingTop="20"/>
+	</s:layout>
+	
+	<s:states>
+		<s:State name="normal" />
+		<s:State name="state1" />
+		<s:State name="state2" />
+		<s:State name="state3" />
+		<s:State name="state4" />
+		<s:State name="state5" />
+	</s:states>
+	
+	<s:Button id="btn1" label="Button 1" 
+			  includeIn="normal, state1, state2, state4"/>
+	<s:Button id="btn2" label="Button 2" 
+			  excludeFrom="normal, state3"/>
+	<s:Button id="btn3" label="Button 3" 
+			  includeIn="normal, state3, state5"/>
+	
+	<mx:ComboBox id="cBox" 
+				dataProvider="{['normal', 'state1', 'state2', 'state3', 'state4', 'state5']}" 
+				selectedIndex="0" 
+				change="cBox_changeHandler(event)"/>
+
+</s:Group>

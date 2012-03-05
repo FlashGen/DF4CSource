@@ -1,0 +1,43 @@
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx" 
+		  width="400" height="300"
+		  creationComplete="creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			private var _dpColl       :ArrayCollection;
+			
+			protected function creationCompleteHandler(event:FlexEvent):void
+			{
+				_dpColl = new ArrayCollection([{label:'View 1', data:0},
+					{label:'View 2', data:1},
+					{label:'View 3', data:2}]);
+				tbar.selectedIndex = 0;
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:Move id="moveOn" xFrom="{this.width}" xTo="0" />
+		<s:Move id="moveOff" xFrom="0" xTo="{-this.width}" />
+	</fx:Declarations>
+	
+	<mx:ViewStack id="vStack" selectedIndex="{tbar.selectedIndex}"
+					width="100%" height="100%">
+		<mx:Canvas backgroundColor="0xff0000" 
+				   showEffect="{moveOn}" hideEffect="{moveOff}" />
+		<mx:Canvas backgroundColor="0x00ff00"
+				   showEffect="{moveOn}" hideEffect="{moveOff}" />
+		<mx:Canvas backgroundColor="0x0000ff"
+				   showEffect="{moveOn}" hideEffect="{moveOff}" />
+	</mx:ViewStack>
+	
+	<s:ButtonBar id="tbar" dataProvider="{_dpColl}"  />
+
+	
+</s:VGroup>

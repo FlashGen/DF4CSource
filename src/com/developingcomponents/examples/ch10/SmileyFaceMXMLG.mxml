@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 width="300" height="300">
+	
+	<!-- draw the circle -->
+	<s:Ellipse height="300" width="300" x="1.5" y="1.5">
+		<s:fill>
+			<s:SolidColor color="0xfcee21"/>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke caps="none" joints="miter" 
+								miterLimit="4" weight="3"/>
+		</s:stroke>
+	</s:Ellipse>
+	
+	<!-- Draw the left eye -->
+	<s:Path data="M 10.78 39.429 L 30.422 33.358 C 29.109 14.373 22.853 -0.015 15.329 -0.015 C 6.851 -0.015 -0.022 18.246 -0.022 40.774 C -0.022 63.301 6.851 81.563 15.329 81.563 C 23.51 81.563 30.194 64.556 30.652 43.123 L 10.78 39.429 Z" winding="nonZero" x="166" y="75">
+		
+		<s:fill>
+			<s:SolidColor/>
+		</s:fill>
+	</s:Path>
+	<!-- Draw the right eye -->
+	<s:Path data="M 10.821 39.429 L 30.463 33.358 C 29.15 14.373 22.894 -0.015 15.37 -0.015 C 6.892 -0.015 0.019 18.246 0.019 40.774 C 0.019 63.301 6.892 81.563 15.37 81.563 C 23.551 81.563 30.235 64.556 30.693 43.123 L 10.821 39.429 Z" winding="nonZero" x="99" y="75">
+		<s:fill>
+			<s:SolidColor/>
+		</s:fill>
+	</s:Path>
+	
+	<!-- Draw the smile -->
+	<s:Path data="M 62.784 44.639 C 29.845 39.313 4.874 20.192 2.534 -0.019 C 1.507 2.184 0.764 4.496 0.372 6.921 C -3.302 29.636 23.613 52.884 60.486 58.847 C 97.359 64.811 130.23 51.232 133.904 28.517 C 134.296 26.093 134.32 23.663 134.039 21.249 C 125.448 39.693 95.722 49.967 62.784 44.639 Z" winding="nonZero" x="72" y="181">
+		<s:fill>
+			<s:SolidColor/>
+		</s:fill>
+	</s:Path>
+</s:Group>

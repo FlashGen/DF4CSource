@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 gap="0"
+		 creationComplete="group1_creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.CursorBookmark;
+			import mx.collections.IViewCursor;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.events.FlexEvent;
+			
+			import spark.components.supportClasses.TextBase;
+			
+			[Bindable]
+			private var dpCursor		:IViewCursor;
+			
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				dpCursor = productColl.createCursor();
+				dpCursor.seek(CursorBookmark.FIRST);
+			}
+			
+			protected function movePrevious(e:MouseEvent):void
+			{
+				dpCursor.movePrevious();
+				
+				if(dpCursor.beforeFirst)
+					dpCursor.seek(CursorBookmark.LAST);
+			}
+			
+			protected function moveNext(e:MouseEvent):void
+			{
+				dpCursor.moveNext();
+				
+				if(dpCursor.afterLast)
+					dpCursor.seek(CursorBookmark.FIRST);
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:ArrayCollection id="productColl">
+			<s:source>
+				<fx:Array id="productArr">				
+					<fx:Object name="AIR" bu="Platform" icon="@Embed(source='assets/icons/air.png')" />
+					<fx:Object name="Dreamweaver" bu="Creative Suite" icon="@Embed(source='assets/icons/dreamweaver.png')" />
+					<fx:Object name="Fireworks" bu="Creative Suite" icon="@Embed(source='assets/icons/fireworks.png')" />
+					<fx:Object name="Flash Professional" bu="Creative Suite" icon="@Embed(source='assets/icons/flash.png')" />
+					<fx:Object name="Flash Player" bu="Platform" icon="@Embed(source='assets/icons/flashplayer.png')" />
+					<fx:Object name="Flash Builder" bu="Platform" icon="@Embed(source='assets/icons/flex.png')" />
+					<fx:Object name="Illustrator" bu="Creative Suite" icon="@Embed(source='assets/icons/illustrator.png')" />
+					<fx:Object name="Photoshop" bu="Creative Suite" icon="@Embed(source='assets/icons/photoshop.png')" />
+				</fx:Array>
+			</s:source>
+		</s:ArrayCollection>
+	</fx:Declarations>
+
+	<s:Panel title="{dpCursor.current.name + ' - ' + dpCursor.current.bu}"
+			 width="200" height="232">
+		<mx:Image width="200" height="200" 
+				  source="{dpCursor.current.icon}" 
+				  horizontalCenter="0" 
+				  smoothBitmapContent="true" 
+				  scaleContent="true" top="0"/>
+		
+	</s:Panel>
+	<s:BorderContainer backgroundColor="0xcccccc" width="200" height="30">
+		<s:layout>
+			<s:HorizontalLayout verticalAlign="middle" 
+								horizontalAlign="center"
+								paddingLeft="5" paddingRight="5"/>
+		</s:layout>
+		<s:Button id="prevBtn" label="&lt;"
+				  width="30" height="20"
+				  toolTip="Move Previous" click="movePrevious(event)"/>
+		<s:Rect width="100%" />
+		<s:Button id="nextBtn"  label="&gt;"
+				  width="30" height="20"
+				  toolTip="Move Next" click="moveNext(event)"/>	
+	</s:BorderContainer>
+</s:VGroup>

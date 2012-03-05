@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   xmlns:components="com.developingcomponents.components.*" 
+			   minWidth="800" minHeight="600"
+			   >
+	
+	<fx:Style source="assets/css/globalCSS.css"/>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:controlBarContent>
+		<s:Label id="title" text="Chapter 03 - Anatomy Of A Component" styleName="pageHeader"/>	
+	</s:controlBarContent>
+	
+	<s:layout>
+		<s:HorizontalLayout paddingBottom="20" paddingLeft="20" 
+							paddingRight="20" paddingTop="20" />
+	</s:layout>
+	
+	<!-- 
+		Examples of template components
+	-->
+	<s:VGroup width="100%" height="100%" 
+			  paddingLeft="20" paddingTop="20" 
+			  paddingRight="20" paddingBottom="20">
+		<s:Label text="Template Component using simple UIComponent instantiation" />
+		<components:UIComponentTemplateExample>
+			<components:controlBar>
+				<s:Button label="Button 1" />
+				<s:Button label="Button 2" />
+				<s:Button label="Button 3" />
+			</components:controlBar>
+		</components:UIComponentTemplateExample>
+		
+		<s:Label text="Template Component using IDeferredInstance for deferred instantiation" />
+		<components:DeferredInstanceTemplateExample>
+			<components:controlBar>
+				<s:Button label="Button 4" />
+				<s:Button label="Button 5" />
+				<s:Button label="Button 6" />
+			</components:controlBar>
+		</components:DeferredInstanceTemplateExample>
+	</s:VGroup>
+</s:Application>

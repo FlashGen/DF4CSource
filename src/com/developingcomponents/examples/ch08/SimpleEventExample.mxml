@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 initialize="init(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import flash.events.Event;
+			import flash.events.MouseEvent;
+			
+			import mx.controls.Alert;
+			
+			public function init(e:Event):void
+			{
+				panel.addEventListener(MouseEvent.MOUSE_DOWN, 
+					displayInfoAlert, true);
+			}
+			
+			public function displayInfoAlert(e:Event):void
+			{
+				Alert.show("This is an alert from the " + e.currentTarget.id,
+					e.currentTarget.id );
+			}              
+		]]>
+	</fx:Script>
+
+	
+	<s:Panel id="panel" title="Capture Example" width="250" height="300" />
+
+</s:Group>

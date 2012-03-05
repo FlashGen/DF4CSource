@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 title="Login">
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" verticalAlign="middle" />
+	</s:layout>
+	
+	<mx:Form id="formContainer" visible="true">
+		<mx:FormItem id="emailLbl" label="Email:" required="true" >
+			<s:TextInput id="email"/>
+		</mx:FormItem>
+		<mx:FormItem label="Password:" required="true" id="formitem1">
+			<s:TextInput id="password" displayAsPassword="true"/>
+		</mx:FormItem>
+		<s:VGroup id="formButtonsContainer" width="100%" 
+				  horizontalAlign="right" verticalAlign="middle">
+			<s:HGroup id="formButtons">
+				<s:Button id="registerBtn" label="Register"/>
+				<s:Button id="submitCredentialsBtn"  label="Login"/>
+			</s:HGroup>
+			<mx:Label id="forgottenLbl" text="Forgotten your Details? Click here."/>
+		</s:VGroup>
+	</mx:Form>
+</s:Panel>

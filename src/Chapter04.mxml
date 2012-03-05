@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   xmlns:components="com.developingcomponents.components.*"
+			   minWidth="800" minHeight="600" 
+			   >
+	
+	<fx:Style source="assets/css/globalCSS.css"/>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:controlBarContent>
+		<s:Label id="title" text="Chapter 04 - Creating Your First Component" styleName="pageHeader"/>	
+	</s:controlBarContent>
+	
+	<s:VGroup width="100%" height="100%">	
+		<s:HGroup width="100%" height="100%"
+				  paddingLeft="20" paddingTop="20" 
+				  paddingRight="20" paddingBottom="20">
+			<s:Panel width="250" height="300" title="MyFirstComponent (initial codebase)">
+				<s:layout>
+					<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+				</s:layout>
+				<components:MyFirstComponent />
+				<s:Label text="Color is hardcoded within the component" />
+			</s:Panel>
+			<s:Panel width="250" height="300" title="MyFirstComponent (revision 1)">
+				<s:layout>
+					<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+				</s:layout>
+				<components:MyFirstComponent_Revision1 backgroundColor="0x00ff00" />
+				<s:Label text="Color is exposed but not at runtime" />
+			</s:Panel>
+			<s:Panel width="250" height="300" title="MyFirstComponent (revision 2)">
+				<s:layout>
+					<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+				</s:layout>
+				<components:MyFirstComponent_Revision2 id="mfc"/>
+				<s:Button label="Click to change color dynamically" click="mfc.backgroundColor=Math.round(Math.random() * 0xffffff)"/>
+			</s:Panel>
+			<s:Panel width="250" height="300" title="MyFirstComponent (revision 3)">
+				<s:layout>
+					<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+				</s:layout>
+				<components:MyFirstComponent_Revision3 id="mfc_r3" />
+				<s:Button label="Click to change color dynamically" click="mfc_r3.backgroundColor=Math.round(Math.random() * 0xffffff)"/>
+			</s:Panel>
+		</s:HGroup>
+		
+		<s:HGroup width="100%" height="100%"
+				  paddingLeft="20" paddingTop="20" 
+				  paddingRight="20" paddingBottom="20">
+			<s:Panel width="250" height="300" title="MyFirstComponent (revision 4)">
+				<s:layout>
+					<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+				</s:layout>
+				<components:MyFirstComponent_Revision4 id="mfc_r4" />
+				<s:Button label="Click to change background color" click="mfc_r4.backgroundColor=Math.round(Math.random() * 0xffffff)"/>
+				<s:Button label="Click to change ellipse color" click="mfc_r4.ellipseColor=Math.round(Math.random() * 0xffffff)"/>
+			</s:Panel>
+			<s:Panel width="250" height="300" title="MyFirstComponent (revision 5 - Halo)">
+				<s:layout>
+					<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+				</s:layout>
+				<components:MyFirstComponent_Revision5 id="mfc_r5"/>
+				<s:Button label="Click to change background color" click="mfc_r5.setStyle('backgroundColor', Math.round(Math.random() * 0xffffff))"/>
+			</s:Panel>
+			<s:Panel width="250" height="300" title="MyFirstComponent (revision 6 - Halo MXML)">
+				<s:layout>
+					<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+				</s:layout>
+				<components:MyFirstComponent_Revision6 id="mfc_r6"/>
+				<s:Button label="Click to change background color" click="mfc_r6.setStyle('backgroundColor', Math.round(Math.random() * 0xffffff))"/>
+			</s:Panel>
+			<s:Panel width="250" height="300" title="MyFirstComponent (revision 7 - Spark)">
+				<s:layout>
+					<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+				</s:layout>
+				<components:MyFirstComponent_Revision7 id="mfc_r7"/>
+				<s:Label text="Spark variant utilizing a separate skin class" />				
+			</s:Panel>
+			
+		</s:HGroup>
+	</s:VGroup>
+</s:Application>
